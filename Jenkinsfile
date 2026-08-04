@@ -39,7 +39,7 @@ pipeline {
             steps {
                 powershell script: '''
                     $env:Path = "$env:DOCKER_PATH;$env:Path"
-                    $env:DOCKER_BUILDKIT = 1
+                    $env:DOCKER_BUILDKIT = 0
                     docker build -t "${env:DOCKERHUB_IMAGE}:${env:IMAGE_TAG}" -t "${env:DOCKERHUB_IMAGE}:latest" .
                 '''
             }
