@@ -35,6 +35,7 @@ def main():
         username=os.environ.get("USER_RABBIT", "admin"),
         password=os.environ.get("PASSWORD_RABBIT", ""),
         queue=os.environ.get("BACKUP_QUEUE", "backup.fila"),
+        email=os.environ.get("EMAIL_TO", ""),
     )
 
     def backup_database(database):

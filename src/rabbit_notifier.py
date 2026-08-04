@@ -6,12 +6,13 @@ import pika
 
 
 class RabbitNotifier:
-    def __init__(self, host, port, username, password, queue):
+    def __init__(self, host, port, username, password, queue, email=None):
         self.host = host
         self.port = port
         self.username = username
         self.password = password
         self.queue = queue
+        self.email = email
         self.logger = logging.getLogger(__name__)
 
     def notify(self, status, database, filename=None, message=None):
@@ -31,6 +32,7 @@ class RabbitNotifier:
             "timestamp": datetime.datetime.now().isoformat(),
             "filename": filename,
             "message": message,
+            "email": self.email,
         }
 
         channel.basic_publish(
