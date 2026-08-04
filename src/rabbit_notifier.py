@@ -39,7 +39,11 @@ class RabbitNotifier:
             exchange="",
             routing_key=self.queue,
             body=json.dumps(body, ensure_ascii=False),
-            properties=pika.BasicProperties(delivery_mode=2),
+            properties=pika.BasicProperties(
+                content_type="application/json",
+                delivery_mode=2,
+                priority=0,
+            ),
         )
         connection.close()
         self.logger.info("Notificacao enviada para %s: %s", self.queue, status)
