@@ -22,7 +22,7 @@ pipeline {
 
         stage('Verificar Branch') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {
                 echo "Executando pipeline na branch master"
